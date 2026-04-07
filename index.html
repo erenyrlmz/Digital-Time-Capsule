@@ -41,8 +41,29 @@
         <form id="capsuleForm">
             <input type="text" id="capsuleTitle" placeholder="Kapsül Başlığı (Örn: Mezuniyet Mesajım)" required>
             <textarea id="capsuleMessage" placeholder="Geleceğe mesajını yaz..." required></textarea>
-            <label for="unlockDate">Açılma Tarihi:</label>
-            <input type="datetime-local" id="unlockDate" required>
+            <label>Gelecekteki Açılma Tarihi:</label>
+
+<div class="cyber-date-picker">
+    <div class="date-box">
+        <button type="button" id="btnDayUp" class="cyber-btn">▲</button>
+        <span id="dispDay">01</span>
+        <button type="button" id="btnDayDown" class="cyber-btn">▼</button>
+        <small>GÜN</small>
+    </div>
+    <div class="date-box">
+        <button type="button" id="btnMonthUp" class="cyber-btn">▲</button>
+        <span id="dispMonth">01</span>
+        <button type="button" id="btnMonthDown" class="cyber-btn">▼</button>
+        <small>AY</small>
+    </div>
+    <div class="date-box year-box">
+        <button type="button" id="btnYearUp" class="cyber-btn">🚀</button>
+        <span id="dispYear">2026</span>
+        <button type="button" id="btnYearDown" class="cyber-btn">▼</button>
+        <small>YIL</small>
+    </div>
+</div>
+<input type="hidden" id="unlockDate" value="2026-01-01">
             <select id="category">
                 <option value="1">Kişisel</option>
                 <option value="2">Eğitim</option>
@@ -53,5 +74,12 @@
     </div>
 </div>
 <script src="script.js"></script>
+<div id="uzayPrompt" style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: #020617; border: 2px solid #22d3ee; padding: 20px; border-radius: 15px; box-shadow: 0 0 20px rgba(34, 211, 238, 0.5); z-index: 9999; text-align: center; width: 300px;">
+    <h3 style="color: #22d3ee; margin-top: 0; font-family: sans-serif;">Hedef Yıl Koordinatı</h3>
+    <input type="number" id="uzayInput" style="background: #0f172a; color: white; border: 1px solid #334155; padding: 10px; border-radius: 5px; width: 80%; margin-bottom: 15px; text-align: center; font-size: 1.2rem; outline: none;">
+    <br>
+    <button id="uzayOnay" style="background: #22d3ee; color: #020617; border: none; padding: 8px 20px; border-radius: 5px; cursor: pointer; font-weight: bold;">🚀 Işınlan</button>
+    <button id="uzayIptal" style="background: transparent; color: #94a3b8; border: 1px solid #334155; padding: 8px 20px; border-radius: 5px; cursor: pointer; margin-left: 10px;">İptal</button>
+</div>
 </body>
 </html>
