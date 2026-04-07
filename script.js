@@ -20,3 +20,59 @@ const countdownTask = setInterval(function() {
         document.getElementById("timer1").innerHTML = "KAPSÜL AÇILDI!";
     }
 }, 1000);
+// Modal elemanlarını seçelim
+const modal = document.getElementById("capsuleModal");
+const openBtn = document.querySelector(".hero .btn-primary"); // Hero'daki buton
+const closeBtn = document.querySelector(".close-btn");
+
+// Butona basınca modalı aç
+openBtn.onclick = function() {
+    modal.style.display = "block";
+}
+
+// Çarpıya basınca kapat
+closeBtn.onclick = function() {
+    modal.style.display = "none";
+}
+
+// Dışarı tıklayınca kapat
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+// --- 3. FORM GÖNDERME KONTROLÜ ---
+const capsuleForm = document.getElementById("capsuleForm");
+
+if (capsuleForm) {
+    capsuleForm.onsubmit = function(e) {
+        e.preventDefault(); // Sayfanın yenilenmesini (refresh) engeller
+        
+        // Formdaki başlığı alalım
+        const title = document.getElementById("capsuleTitle").value;
+        
+        // Şimdilik sadece bir uyarı mesajı gösterelim
+        alert("Kapsül Hazırlanıyor: " + title + "\nBackend bağlantısı henüz kurulmadı.");
+    };
+}
+const unlockDateInput = document.getElementById("unlockDate");
+
+if (unlockDateInput) {
+    // Takvimi açtığında "en erken bugün"ü seçebilmesi için minimum tarih belirle
+    const now = new Date().toISOString().slice(0, 16);
+    unlockDateInput.min = now;
+}
+
+// Form gönderilirken tarih kontrolü
+capsuleForm.onsubmit = function(e) {
+    const selectedDate = new Date(unlockDateInput.value).getTime();
+    const now = new Date().getTime();
+
+    if (selectedDate <= now) {
+        e.preventDefault();
+        alert("Lütfen gelecekteki bir tarih seçin! Geçmişe kapsül gönderemezsiniz.");
+        return;
+    }
+    
+    // ... diğer alert kodun buraya gelebilir ...
+};

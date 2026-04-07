@@ -34,5 +34,24 @@
             </div>
         </section>
     </main>
+    <div id="capsuleModal" class="modal">
+    <div class="modal-content">
+        <span class="close-btn">&times;</span>
+        <h2>Yeni Zaman Kapsülü Kilitle</h2>
+        <form id="capsuleForm">
+            <input type="text" id="capsuleTitle" placeholder="Kapsül Başlığı (Örn: Mezuniyet Mesajım)" required>
+            <textarea id="capsuleMessage" placeholder="Geleceğe mesajını yaz..." required></textarea>
+            <label for="unlockDate">Açılma Tarihi:</label>
+            <input type="datetime-local" id="unlockDate" required>
+            <select id="category">
+                <option value="1">Kişisel</option>
+                <option value="2">Eğitim</option>
+                <option value="3">Eğlence</option>
+            </select>
+            <button type="submit" class="btn-primary">Kapsülü Zaman Boşluğuna Gönder</button>
+        </form>
+    </div>
+</div>
+<script src="script.js"></script>
 </body>
 </html>
