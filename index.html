@@ -6,9 +6,33 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Zaman Kapsülüne Hoş Geldin!</h1>
-    <div id="countdown">Geri sayım birazdan başlayacak...</div>
-    
-    <script src="script.js"></script>
+    <nav>
+        <div class="logo">Zaman Kapsülü</div>
+        <ul>
+            <li><a href="#">Kapsüllerim</a></li>
+            <li><a href="#">Yeni Kapsül Oluştur</a></li>
+            <li><a href="#">Çıkış Yap</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <section class="hero">
+            <h1>Geleceğe Bir Mesaj Bırak</h1>
+            <p>Anılarını, mesajlarını ve medyalarını kilitle; zamanı gelince açılsınlar.</p>
+            <button class="btn-primary">Kapsül Oluştur</button>
+        </section>
+
+        <section class="capsule-container">
+            <h2>Aktif Kapsüllerin</h2>
+            <div class="capsule-grid" id="capsuleList">
+                <div class="capsule-card">
+                    <h3>Mezuniyet Mesajım</h3>
+                    <p>Açılış Tarihi: 2027-06-15</p>
+                    <div class="timer" id="timer1">00:00:00:00</div>
+                    <span class="status locked">Kilitli</span>
+                </div>
+            </div>
+        </section>
+    </main>
 </body>
 </html>
