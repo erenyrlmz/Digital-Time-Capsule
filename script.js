@@ -1,0 +1,1 @@
+console.log("Sistem çalışıyor, kapsül hazır!");
