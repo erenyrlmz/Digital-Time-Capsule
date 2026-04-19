@@ -39,8 +39,7 @@
             <h3><?php echo htmlspecialchars($kapsul['title']); ?></h3>
             <p>Açılış Tarihi: <?php echo $kapsul['target_date']; ?></p>
             
-            
-            <div class="timer" data-date="<?= $kapsul['target_date'] ?>">
+            <div class="timer">
                 Geri Sayım Yükleniyor...
             </div>
 
