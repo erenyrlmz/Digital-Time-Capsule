@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Digital Time Capsule — Project Report</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap');
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:'Inter',Arial,sans-serif;font-size:11pt;color:#1e293b;background:#fff;line-height:1.7}
+  .page{max-width:820px;margin:0 auto;padding:40px}
+  @media print {
+    @page { size: A4; margin: 1.5cm 2cm; }
+    body { background: #fff; font-size: 10.5pt; }
+    .page { padding: 0; max-width: 100%; }
+    .no-print { display: none !important; }
+    .cover { page-break-after: always; height: 100vh; justify-content: center; border-bottom: none; }
+    h2 { page-break-before: always; page-break-after: avoid; margin-top: 0; }
+    h3, h4 { page-break-after: avoid; }
+    img, table, pre, .box, .ss-cap { page-break-inside: avoid; }
+    p, li { orphans: 3; widows: 3; }
+  }
+  .cover{text-align:center;padding:60px 40px;border-bottom:3px solid #0ea5e9;min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center}
+  .cover-badge{background:#0ea5e9;color:#fff;padding:6px 20px;border-radius:20px;font-size:10pt;font-weight:700;margin-bottom:28px;display:inline-block}
+  .cover h1{font-size:30pt;font-weight:900;color:#0f172a;margin-bottom:8px}
+  .cover .sub{font-size:13pt;color:#475569;margin-bottom:40px}
+  .cover-info{background:#f8fafc;border:1px solid #e2e8f0;border-radius:12px;padding:20px 36px;text-align:left;min-width:420px; page-break-inside: avoid;}
+  .cover-info p{padding:5px 0;border-bottom:1px solid #f1f5f9;font-size:10.5pt;color:#334155}
+  .cover-info p:last-child{border:none}
+  .cover-info strong{color:#0f172a}
+  h2{font-size:16pt;font-weight:800;color:#0f172a;margin:32px 0 10px;padding-bottom:7px;border-bottom:2.5px solid #0ea5e9}
+  h3{font-size:12.5pt;font-weight:700;color:#0369a1;margin:18px 0 6px}
+  h4{font-size:11pt;font-weight:700;color:#334155;margin:14px 0 5px}
+  p{margin-bottom:9px;color:#334155}
+  ul{margin:6px 0 12px 20px;color:#334155}
+  li{margin-bottom:3px}
+  pre{background:#0f172a;color:#7dd3fc;padding:14px;border-radius:8px;font-size:8.5pt;overflow-x:auto;margin:8px 0 16px;border-left:3px solid #0ea5e9;line-height:1.5;white-space:pre-wrap; page-break-inside: avoid;}
+  .ss{width:100%;border-radius:8px;border:1px solid #e2e8f0;margin:10px 0 4px;box-shadow:0 2px 8px rgba(0,0,0,0.08); page-break-inside: avoid;}
+  .ss-cap{text-align:center;font-size:9pt;color:#64748b;margin-bottom:16px;font-style:italic; page-break-inside: avoid;}
+  table{width:100%;border-collapse:collapse;margin:10px 0 18px;font-size:10pt; page-break-inside: avoid;}
+  th{background:#0f172a;color:#fff;padding:9px 12px;text-align:left;font-weight:600}
+  td{padding:8px 12px;border-bottom:1px solid #e2e8f0;color:#334155}
+  tr:nth-child(even) td{background:#f8fafc}
+  .box{background:#eff6ff;border-left:4px solid #0ea5e9;padding:11px 15px;border-radius:0 8px 8px 0;margin:12px 0;font-size:10pt;color:#1e40af; page-break-inside: avoid;}
+  .green{color:#16a34a;font-weight:700}
+</style>
+</head>
+<body><div class="page">
+
+<!-- COVER -->
+<div class="cover">
+  <span class="cover-badge">CPE210 Database Systems &amp; CPE212 Internet-Based Programming</span>
+  <h1>⏳ Digital Time Capsule</h1>
+  <p class="sub">2025–2026 Spring Semester Project Report</p>
+  <div class="cover-info">
+    <p><strong>Abdullah Eren Yorulmaz</strong> — 2310205028</p>
+    <p><strong>Mahammadali Rasulzade</strong> — 2310205590</p>
+    <p><strong>Sait Yasir Başaran</strong> — 2310205040</p>
+    <p><strong>Courses:</strong> Database Systems (CPE210) &amp; Internet-Based Programming (CPE212)</p>
+    <p><strong>Date:</strong> May 10, 2026</p>
+    <p><strong>Technologies:</strong> PHP 8, MySQL, HTML5, CSS3, JavaScript ES6+, AJAX</p>
+  </div>
+</div>
+
+<!-- GROUP CONTRIBUTIONS -->
+<h2>Group Members and Contribution Rates</h2>
+<table>
+  <tr><th>Student Name</th><th>Student No</th><th>Contribution</th><th>Responsibilities</th></tr>
+  <tr><td>Abdullah Eren Yorulmaz</td><td>2310205028</td><td class="green">100%</td><td>Backend development (PHP, database integration, AJAX, session management)</td></tr>
+  <tr><td>Mahammadali Rasulzade</td><td>2310205590</td><td class="green">100%</td><td>Testing, debugging, and report preparation</td></tr>
+  <tr><td>Sait Yasir Başaran</td><td>2310205040</td><td class="green">100%</td><td>Frontend development (HTML, CSS, JavaScript, UI design)</td></tr>
+</table>
+<div class="box">All group members actively participated in every phase of the project. Contribution rates are equally determined as <strong>100%</strong> for each member.</div>
+
+<!-- 1. PROJECT PURPOSE -->
+<h2>1. Project Purpose and Description</h2>
+<p><strong>Digital Time Capsule</strong> is a web application that allows users to create "capsules" containing text messages and media files (photos/videos) and lock them until a specified opening date.</p>
+<div class="box">Scenario: A user creates a capsule like "a letter to myself in 5 years". The capsule remains locked until the specified date arrives. When unlocked, the system presents the content with an animated reveal screen.</div>
+<p><strong>Technology Stack:</strong> PHP 8, MySQL (PDO), HTML5, CSS3, JavaScript ES6+, AJAX (Fetch API), Chart.js, SHA-256</p>
+
+<!-- 2. APPLICATION PAGES -->
+<h2>2. Application Pages</h2>
+
+<h3>2.1 Login Page (login.php)</h3>
+<img src="login_page_1778340412896.png" class="ss" alt="Login Page">
+<p class="ss-cap">Figure 1 — Login Page</p>
+<p>The authentication page where users sign in with their email and password. Credentials are validated on both the client side (JavaScript) and server side (PHP). Passwords are compared using SHA-256 hashing. A descriptive error message is shown on failed login attempts.</p>
+
+<h3>2.2 Registration Page (register.php)</h3>
+<img src="register_page_final_1778340905952.png" class="ss" alt="Register Page">
+<p class="ss-cap">Figure 2 — Registration Page</p>
+<p>New users register with first name, last name, email, and password. JavaScript validates format and length before submission; PHP checks for duplicate emails on the server. Passwords are securely stored using SHA-256 hashing.</p>
+
+<h3>2.3 Home Page (index.php)</h3>
+<img src="custom_index.png" class="ss" alt="Home Page">
+<p class="ss-cap">Figure 3 — Home Page: Capsule List with Search, Filter, and Pagination</p>
+<p>The main dashboard listing all capsules of the logged-in user. Key features:</p>
+<ul>
+  <li>New capsule creation modal (title, message, category, opening date, optional media)</li>
+  <li>Search by title (server-side filtering)</li>
+  <li>Status filters: All / Locked / Ready to Open</li>
+  <li>Pagination: 9 capsules per page</li>
+  <li>Capsules with past opening dates are automatically updated to "Unlocked" status</li>
+  <li>Animated reveal and content pop-up for unlocked capsules</li>
+  <li>Instant capsule deletion via AJAX (no page reload)</li>
+</ul>
+
+<h3>2.4 Capsule Creation Modal</h3>
+<img src="create_modal_top_1778340978277.png" class="ss" alt="Create Modal">
+<p class="ss-cap">Figure 4 — Capsule Creation Form</p>
+<p>A modal form for creating new capsules. Users select an opening date using a spinner date picker and optionally upload a media file. Past date selection is blocked by JavaScript validation.</p>
+
+<h3>2.5 Profile Page (profil.php)</h3>
+<img src="profil_page_1778340874651.png" class="ss" alt="Profile Page">
+<p class="ss-cap">Figure 5 — Profile Page: Statistics, Badge System, and Archive</p>
+<p>Displays personal statistics and the user's capsule archive:</p>
+<ul>
+  <li>Total, locked, and opened capsule counts</li>
+  <li>Badge system: rank titles earned based on capsule count (Novice → Immortal Legend)</li>
+  <li>Progress bar showing how many capsules are needed for the next rank</li>
+  <li>Archive of all opened capsules</li>
+</ul>
+
+<h3>2.6 Galaxy — Leaderboard (galaksi.php)</h3>
+<img src="galaksi_page_1778340883508.png" class="ss" alt="Galaxy Page">
+<p class="ss-cap">Figure 6 — Galaxy: Global User Leaderboard</p>
+<p>A platform-wide leaderboard ranking all users by capsule count. The top three users are highlighted with a special podium display. Search by username and pagination are supported.</p>
+
+<h3>2.7 Statistics Page (istatistikler.php)</h3>
+<img src="istatistikler_page_retry_1778340866938.png" class="ss" alt="Statistics Page">
+<p class="ss-cap">Figure 7 — Statistics Page: SQL Query Results and Category Chart</p>
+<p>This page demonstrates all 5 required SQL query types running against the live database: Subquery, Join, Group By, Date Functions, and Character Functions. Results are displayed in paginated tables with search support. Category distribution is visualized using a Chart.js doughnut graph.</p>
+
+<!-- 3. IBP -->
+<h2>3. Internet-Based Programming (CPE212) — Modules</h2>
+
+<h3>3.1 User Authentication</h3>
+<p>The authentication system is implemented in three layers:</p>
+<ul>
+  <li><strong>JavaScript Validation:</strong> Email format, password length, and required field checks are performed client-side before form submission.</li>
+  <li><strong>PHP Server-Side Validation:</strong> Duplicate email checks, empty field validation, and database lookup are performed server-side.</li>
+  <li><strong>SHA-256 Encryption:</strong> User passwords are hashed using <code>hash('sha256', $password)</code> before storage. Plain-text passwords are never saved.</li>
+  <li><strong>Session Management:</strong> On successful login, <code>$_SESSION['user_id']</code> is set. All protected pages verify the session.</li>
+</ul>
+
+<h3>3.2 Core Function — Capsule Management</h3>
+<p>The application's core functionality is built around the capsule lifecycle:</p>
+<ul>
+  <li><strong>Creation:</strong> Users enter title, message, category, opening date, and optional media. A PDO transaction atomically writes to CAPSULES, CONTENTS, and CAPSULE_CATEGORY tables.</li>
+  <li><strong>Listing &amp; Filtering:</strong> Server-side SQL LIMIT/OFFSET for pagination, LIKE for search, and WHERE conditions for status filtering.</li>
+  <li><strong>Auto Unlock:</strong> On every page load, capsules where target_date ≤ CURRENT_DATE are automatically updated from Locked to Unlocked status.</li>
+  <li><strong>Deletion:</strong> AJAX-based deletion removes the capsule and all related data in a transaction without reloading the page.</li>
+  <li><strong>Opening:</strong> An animated reveal sequence plays, then content is fetched via AJAX, displayed in a pop-up, and the capsule is moved to Opened status.</li>
+</ul>
+<p><strong>CSS Design:</strong> A dark-mode cyberpunk theme with CSS custom properties, keyframe animations, hover effects, and a responsive grid layout delivers a modern user experience.</p>
+
+<h3>3.3 AJAX Integration</h3>
+<p>Three critical operations are performed without page reloads using the Fetch API:</p>
+<ul>
+  <li><strong>Capsule Deletion:</strong> A POST request is sent to <code>ajax_islemler.php</code>; on success, the capsule card is removed from the DOM.</li>
+  <li><strong>Capsule Opening:</strong> The database update runs in the background while the reveal animation plays in the foreground.</li>
+  <li><strong>Content Fetching:</strong> Capsule content is retrieved from <code>get_capsule_content.php</code> as JSON and used to dynamically populate the pop-up.</li>
+</ul>
+
+<!-- 4. DATABASE SYSTEMS -->
+<h2>4. Database Systems (CPE210) — Design and SQL</h2>
+
+<h3>4.1 Entity Relationship Diagram (ERD)</h3>
+<p>The database consists of <strong>7 core entities</strong> with the following relationships:</p>
+<table>
+  <tr><th>Entity</th><th>Primary Key</th><th>Key Attributes</th><th>Relationships</th></tr>
+  <tr><td><strong>USERS</strong></td><td>user_id (PK)</td><td>first_name, last_name, email, password_hash, created_at</td><td>1:N → CAPSULES, OPENING_LOGS</td></tr>
+  <tr><td><strong>CAPSULES</strong></td><td>capsule_id (PK)</td><td>sender_id (FK), title, message, target_date, status, is_public, created_at</td><td>N:1 → USERS; 1:N → CONTENTS, CAPSULE_CATEGORY, RECIPIENTS, OPENING_LOGS</td></tr>
+  <tr><td><strong>CATEGORIES</strong></td><td>category_id (PK)</td><td>category_name</td><td>N:M ↔ CAPSULES (via CAPSULE_CATEGORY)</td></tr>
+  <tr><td><strong>CONTENTS</strong> (Supertype)</td><td>content_id (PK)</td><td>capsule_id (FK), content_type (discriminator)</td><td>N:1 → CAPSULES; subtypes: TEXT_CONTENTS, MEDIA_CONTENTS</td></tr>
+  <tr><td><strong>RECIPIENTS</strong></td><td>recipient_id (PK)</td><td>capsule_id (FK), full_name, email</td><td>N:1 → CAPSULES</td></tr>
+  <tr><td><strong>CAPSULE_CATEGORY</strong></td><td>capsule_id+category_id (PK)</td><td>capsule_id (FK), category_id (FK)</td><td>Bridge table: CAPSULES ↔ CATEGORIES</td></tr>
+  <tr><td><strong>OPENING_LOGS</strong></td><td>log_id (PK)</td><td>capsule_id (FK), user_id (FK), opened_at</td><td>N:1 → CAPSULES, USERS</td></tr>
+</table>
+
+<h3>4.2 ERD — Oracle Notation</h3>
+<img src="custom_erd.png" class="ss" alt="ERD Diagram">
+<p class="ss-cap">Figure 8 — Entity Relationship Diagram (Oracle Notation) — 7 Entities with Supertype/Subtype</p>
+
+<h3>4.3 Matrix Diagram — Finding Relationships</h3>
+<img src="custom_matrix.png" class="ss" alt="Matrix Diagram">
+<p class="ss-cap">Figure 9 — Matrix Diagram: Entity Relationship Verbs</p>
+
+<h3>4.4 SQL DDL — Table Creation</h3>
+<pre>CREATE TABLE USERS (
+    user_id       INT AUTO_INCREMENT PRIMARY KEY,
+    first_name    VARCHAR(50)  NOT NULL,
+    last_name     VARCHAR(50)  NOT NULL,
+    email         VARCHAR(100) NOT NULL UNIQUE,
+    password_hash VARCHAR(64)  NOT NULL,
+    created_at    DATETIME DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE CAPSULES (
+    capsule_id  INT AUTO_INCREMENT PRIMARY KEY,
+    sender_id   INT NOT NULL,
+    title       VARCHAR(200) NOT NULL,
+    message     TEXT,
+    target_date DATE NOT NULL,
+    status      ENUM('Locked','Unlocked','Opened') DEFAULT 'Locked',
+    is_public   TINYINT(1) DEFAULT 0,
+    created_at  DATETIME DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (sender_id) REFERENCES USERS(user_id)
+);
+
+CREATE TABLE CATEGORIES (
+    category_id   INT AUTO_INCREMENT PRIMARY KEY,
+    category_name VARCHAR(50) NOT NULL
+);
+
+CREATE TABLE CONTENTS (
+    content_id   INT AUTO_INCREMENT PRIMARY KEY,
+    capsule_id   INT NOT NULL,
+    content_type ENUM('Text','Media') NOT NULL,
+    text_body    TEXT,
+    file_url     VARCHAR(500),
+    file_extension VARCHAR(10),
+    FOREIGN KEY (capsule_id) REFERENCES CAPSULES(capsule_id)
+);
+
+CREATE TABLE RECIPIENTS (
+    recipient_id INT AUTO_INCREMENT PRIMARY KEY,
+    capsule_id   INT NOT NULL,
+    full_name    VARCHAR(100) NOT NULL,
+    email        VARCHAR(100) NOT NULL,
+    FOREIGN KEY (capsule_id) REFERENCES CAPSULES(capsule_id)
+);
+
+CREATE TABLE CAPSULE_CATEGORY (
+    capsule_id  INT NOT NULL,
+    category_id INT NOT NULL,
+    PRIMARY KEY (capsule_id, category_id),
+    FOREIGN KEY (capsule_id)  REFERENCES CAPSULES(capsule_id),
+    FOREIGN KEY (category_id) REFERENCES CATEGORIES(category_id)
+);
+
+CREATE TABLE OPENING_LOGS (
+    log_id     INT AUTO_INCREMENT PRIMARY KEY,
+    capsule_id INT NOT NULL,
+    user_id    INT NOT NULL,
+    opened_at  DATETIME DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (capsule_id) REFERENCES CAPSULES(capsule_id),
+    FOREIGN KEY (user_id)    REFERENCES USERS(user_id)
+);</pre>
+
+<h3>4.5 SQL DML Queries</h3>
+
+<h4>1. Subquery — Users Who Have Not Created Any Capsule</h4>
+<pre>SELECT first_name, last_name, email
+FROM USERS
+WHERE user_id NOT IN (
+    SELECT DISTINCT sender_id FROM CAPSULES
+);</pre>
+
+<h4>2. Join — Capsule, User, and Category Relationship</h4>
+<pre>SELECT U.first_name, U.last_name, C.title, CAT.category_name
+FROM CAPSULES C
+JOIN USERS U             ON C.sender_id    = U.user_id
+JOIN CAPSULE_CATEGORY CC ON C.capsule_id   = CC.capsule_id
+JOIN CATEGORIES CAT      ON CC.category_id = CAT.category_id;</pre>
+
+<h4>3. Group By — Number of Capsules per Category</h4>
+<pre>SELECT CAT.category_name, COUNT(CC.capsule_id) AS total_capsules
+FROM CATEGORIES CAT
+LEFT JOIN CAPSULE_CATEGORY CC ON CAT.category_id = CC.category_id
+GROUP BY CAT.category_name
+ORDER BY total_capsules DESC;</pre>
+
+<h4>4. Date Function — Remaining Days for Locked Capsules</h4>
+<pre>SELECT title, target_date,
+       DATEDIFF(target_date, NOW()) AS days_remaining
+FROM CAPSULES
+WHERE status = 'Locked'
+ORDER BY days_remaining ASC;</pre>
+
+<h4>5. Character Function — Reference Code Generation</h4>
+<pre>SELECT
+    UPPER(C.title) AS upper_title,
+    CONCAT(
+        SUBSTRING(U.first_name, 1, 1),
+        SUBSTRING(U.last_name,  1, 1),
+        '-', C.capsule_id
+    ) AS reference_code
+FROM CAPSULES C
+JOIN USERS U ON C.sender_id = U.user_id;</pre>
+
+<!-- 5. CONCLUSION -->
+<h2>5. Conclusion</h2>
+<p>This project resulted in a fully functional web application combining PHP, MySQL, JavaScript, CSS, and AJAX. The application demonstrates core principles of internet-based programming through secure authentication (SHA-256), dynamic capsule management, AJAX-based operations without page reloads, and a modern UI design. The relational database with 7 entities, complete with supertype/subtype modeling and all 5 required SQL query types, fulfills the Database Systems course requirements.</p>
+<div class="box"><strong>Technologies Used:</strong> PHP 8 · MySQL (PDO) · JavaScript ES6+ · CSS3 · HTML5 · AJAX (Fetch API) · Chart.js · SHA-256</div>
+
+<p style="margin-top:28px;text-align:center;color:#94a3b8;font-size:9pt;border-top:1px solid #e2e8f0;padding-top:14px">
+  Abdullah Eren Yorulmaz (2310205028) &nbsp;|&nbsp; Mahammadali Rasulzade (2310205590) &nbsp;|&nbsp; Sait Yasir Başaran (2310205040)<br>
+  CPE210 &amp; CPE212 — Karabuk University — 2025-2026 Spring Semester
+</p>
+
+<p class="no-print" style="margin-top:24px;text-align:center">
+  <button onclick="window.print()" style="background:#0ea5e9;color:#fff;border:none;padding:12px 32px;border-radius:8px;font-size:13pt;cursor:pointer;font-weight:700">🖨️ Save as PDF</button>
+</p>
+
+</div></body></html>

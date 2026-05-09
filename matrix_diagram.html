@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<title>Matrix Diagram — Dijital Zaman Kapsülü</title>
+<style>
+  body { font-family: Arial, sans-serif; margin: 30px; background: #fff; }
+  h2 { color: #cc0000; font-size: 14pt; margin-bottom: 16px; }
+  table { border-collapse: collapse; font-size: 9.5pt; }
+  th, td { border: 1.5px solid #555; padding: 7px 10px; text-align: center; min-width: 90px; }
+
+  /* Header row / col */
+  .h-num  { background: #fff; font-weight: bold; }
+  .h-name { background: #d4d4d4; font-weight: bold; }
+  .h-central { background: #d4d4d4; font-weight: bold; color: #cc0000; }
+
+  /* Diagonal (same entity) */
+  .diag { background: #f59e0b; }
+
+  /* Normal relationship cell */
+  .rel { background: #fff; }
+
+  /* Important relationship (red bg) */
+  .rel-red { background: #ef4444; color: #fff; font-weight: bold; }
+
+  /* Secondary relationship (cyan bg) */
+  .rel-cyan { background: #22d3ee; font-weight: bold; }
+
+  /* Central entity row — strikethrough */
+  .central-row td { text-decoration: line-through; color: #cc0000; font-weight: bold; }
+  .central-row td.diag { text-decoration: none; color: #000; }
+  .central-row td.empty { text-decoration: none; }
+
+  /* Row headers */
+  .row-num  { background: #fff; font-weight: bold; }
+  .row-name { background: #d4d4d4; font-weight: bold; text-align: left; }
+  .row-name-central { background: #d4d4d4; font-weight: bold; text-align: left; color: #cc0000; }
+
+  .empty { background: #fff; }
+  .note { font-size: 9pt; color: #555; margin-top: 18px; }
+  .legend { margin-top: 16px; font-size: 9pt; }
+  .legend span { display: inline-block; width: 16px; height: 16px; margin-right: 5px; vertical-align: middle; border: 1px solid #aaa; }
+</style>
+</head>
+<body>
+
+<h2>MATRIX DIAGRAM (Finding Relationships) — Digital Time Capsule</h2>
+
+<table>
+  <!-- HEADER ROW: Entity names only -->
+  <tr>
+    <td class="h-num"></td>
+    <th class="h-name">USERS</th>
+    <th class="h-name">CAPSULES</th>
+    <th class="h-name">CATEGORIES</th>
+    <th class="h-name">CONTENTS</th>
+    <th class="h-name">RECIPIENTS</th>
+    <th class="h-name">CAPSULE_<br>CATEGORY</th>
+    <th class="h-name">OPENING_<br>LOGS</th>
+  </tr>
+
+  <!-- ROW 1: USERS -->
+  <tr>
+    <td class="row-name">USERS</td>
+    <td class="diag"></td>
+    <td class="rel-red">creates</td>
+    <td class="empty"></td>
+    <td class="empty"></td>
+    <td class="empty"></td>
+    <td class="empty"></td>
+    <td class="rel">opens</td>
+  </tr>
+
+  <!-- ROW 2: CAPSULES -->
+  <tr>
+    <td class="row-name">CAPSULES</td>
+    <td class="rel">created by</td>
+    <td class="diag"></td>
+    <td class="empty"></td>
+    <td class="rel-red">contains</td>
+    <td class="rel">has</td>
+    <td class="rel-cyan">categorized in</td>
+    <td class="rel">logged in</td>
+  </tr>
+
+  <!-- ROW 3: CATEGORIES -->
+  <tr>
+    <td class="row-name">CATEGORIES</td>
+    <td class="empty"></td>
+    <td class="empty"></td>
+    <td class="diag"></td>
+    <td class="empty"></td>
+    <td class="empty"></td>
+    <td class="rel">listed in</td>
+    <td class="empty"></td>
+  </tr>
+
+  <!-- ROW 4: CONTENTS -->
+  <tr>
+    <td class="row-name">CONTENTS</td>
+    <td class="empty"></td>
+    <td class="rel">belongs to</td>
+    <td class="empty"></td>
+    <td class="diag"></td>
+    <td class="empty"></td>
+    <td class="empty"></td>
+    <td class="empty"></td>
+  </tr>
+
+  <!-- ROW 5: RECIPIENTS -->
+  <tr>
+    <td class="row-name">RECIPIENTS</td>
+    <td class="empty"></td>
+    <td class="rel">assigned to</td>
+    <td class="empty"></td>
+    <td class="empty"></td>
+    <td class="diag"></td>
+    <td class="empty"></td>
+    <td class="empty"></td>
+  </tr>
+
+  <!-- ROW 6: CAPSULE_CATEGORY -->
+  <tr>
+    <td class="row-name">CAPSULE_CATEGORY</td>
+    <td class="empty"></td>
+    <td class="rel">categorizes</td>
+    <td class="rel-cyan">lists</td>
+    <td class="empty"></td>
+    <td class="empty"></td>
+    <td class="diag"></td>
+    <td class="empty"></td>
+  </tr>
+
+  <!-- ROW 7: OPENING_LOGS -->
+  <tr>
+    <td class="row-name">OPENING_LOGS</td>
+    <td class="rel">opened by</td>
+    <td class="rel">logs</td>
+    <td class="empty"></td>
+    <td class="empty"></td>
+    <td class="empty"></td>
+    <td class="empty"></td>
+    <td class="diag"></td>
+  </tr>
+</table>
+
+<div class="legend">
+  <strong>Color Code:</strong><br>
+  <span style="background:#f59e0b"></span> Diagonal — same entity (no relationship)<br>
+  <span style="background:#ef4444"></span> Red — main / mandatory relationship<br>
+  <span style="background:#22d3ee"></span> Blue — secondary relationship (N:M junction)<br>
+  <span style="background:#fff;border:1px solid #aaa"></span> White — optional relationship
+</div>
+
+<p class="note">
+  <strong>How to read:</strong> The entity in the row is related to the entity in the column through the shown verb.<br>
+  Example: USERS (row) → CAPSULES (column) = "creates" → A user <em>creates</em> a capsule.<br>
+  Reverse: CAPSULES (row) → USERS (column) = "created by" → A capsule is <em>created by</em> a user.
+</p>
+
+<p style="margin-top:20px;text-align:center" class="no-print">
+  <button onclick="window.print()" style="background:#0f172a;color:#fff;border:none;padding:9px 26px;border-radius:6px;font-size:11pt;cursor:pointer">🖨️ Print / Save as PDF</button>
+</p>
+
+</body>
+</html>
